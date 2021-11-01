@@ -1,7 +1,8 @@
+use kvs::KvsError;
 extern crate clap;
 use clap::{App, AppSettings, Arg, SubCommand};
 use kvs::KvStore;
-use std::process::exit;
+// use std::process::exit;
 
 fn cliprocess(kvstore: &mut KvStore) {
     let matches = App::new(env!("CARGO_PKG_NAME"))
@@ -57,14 +58,14 @@ fn cliprocess(kvstore: &mut KvStore) {
     if let Some(matches) = matches.subcommand_matches("set") {
         let key = matches.value_of("KEY").unwrap().to_owned();
         let val = matches.value_of("VALUE").unwrap().to_owned();
-        eprintln!("unimplemented");
-        exit(1);
+        // eprintln!("unimplemented");
+        // panic!();
         kvstore.set(key, val);
     }
     if let Some(matches) = matches.subcommand_matches("get") {
         let key = matches.value_of("KEY").unwrap().to_owned();
-        eprintln!("unimplemented");
-        exit(1);
+        // eprintln!("unimplemented");
+        // panic!();
         match kvstore.get(key) {
             Some(val) => println!("{}", val),
             None => panic!(),
@@ -72,8 +73,8 @@ fn cliprocess(kvstore: &mut KvStore) {
     }
     if let Some(matches) = matches.subcommand_matches("rm") {
         let key = matches.value_of("KEY").unwrap().to_owned();
-        eprintln!("unimplemented");
-        exit(1);
+        // eprintln!("unimplemented");
+        // panic!();
         kvstore.remove(key);
     }
 }
